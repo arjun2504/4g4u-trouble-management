@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.dataconnector.DataConnector;
 import com.members.UserDetails;
@@ -29,7 +30,7 @@ public class TicketData {
 	public void prepareTicket(int ticketId) {
 		this.con = new DataConnector().connect();
 		try {
-			PreparedStatement st = con.prepareStatement("SELECT id, title, department, category, subcat, description, status, user_id, phone, email FROM tickets WHERE id = ?");
+			PreparedStatement st = con.prepareStatement("SELECT id, title, department, category, subcat, description, status, user_id, phone, email, last_modified, created_at FROM tickets WHERE id = ?");
 			st.setInt(1, ticketId);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
@@ -44,6 +45,8 @@ public class TicketData {
 				setPhone(rs.getString(9)); 
 				setEmail(rs.getString(10));
 				setFeedback( new Feedback( getID() ) );
+				setLastModified(rs.getLong(11));
+				setCreatedAt(rs.getLong(12));
 			}
 			
 			this.con.close();
@@ -76,6 +79,14 @@ public class TicketData {
 		
 		return ticketList;
 		
+	}
+	
+	public Date getLastModifiedDate() {
+		return new Date((long) this.lastModified * 1000 );
+	}
+	
+	public Date getCreatedAtDate() {
+		return new Date((long) this.createdAt * 1000 );
 	}
 	
 	public Feedback getFeedback() {

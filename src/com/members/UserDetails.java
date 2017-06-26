@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.dataconnector.DataConnector;
 
@@ -55,6 +56,19 @@ public class UserDetails {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public int updateProfile(String fname, String lname, String ph, String em) {
+		Connection con = new DataConnector().connect();
+		try {
+			Statement st = con.createStatement();
+			int numOfRows = st.executeUpdate("UPDATE users SET first_name = '" + fname + "', last_name = '" + lname + "', phone = '" + ph + "', email = '" + em + "' WHERE id = " + getID());
+			con.close();
+			return numOfRows;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 	public boolean isAdmin() {

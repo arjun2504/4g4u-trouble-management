@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/EditProfile")
 public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	HttpSession session = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,9 +29,9 @@ public class EditProfile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("email") != null) {
-			String email = (String) session.getAttribute("email");
+		this.session = request.getSession();
+		if(this.session.getAttribute("email") != null) {
+			String email = (String) this.session.getAttribute("email");
 			UserDetails userdata = new UserDetails(email);
 			request.setAttribute("userdata", userdata);
 			
@@ -46,8 +46,39 @@ public class EditProfile extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		this.session = request.getSession();
+		if(this.session.getAttribute("email") != null) {
+			String fname = request.getParameter("fname");
+			String lname = request.getParameter("lname");
+			String email = request.getParameter("email");
+			String phone = request.getParameter("phone");
+			String sessionEmail = (String) this.session.getAttribute("email");
+			
+			UserDetails ud = new UserDetails(sessionEmail);
+			int userId = ud.getID();
+			
+			UserDetails edited = new UserDetails(ud.getID());
+				
+			if(!email.equals(sessionEmail)) {
+				UserDetails ud1 = new UserDetails(email);
+				if(ud1.getFirstName() == null) {
+					//new email is not present, hence we can go for next step
+					this.session.setAttribute("email", email);
+					edited.updateProfile(fname, lname, phone, email);
+				}
+			} else if(email.equals(sessionEmail)) {
+				edited.updateProfile(fname, lname, phone, email);
+			}
+			UserDetails newDetails = new UserDetails((String) this.session.getAttribute("email"));
+			request.setAttribute("userdata", newDetails);
+			RequestDispatcher rd = request.getRequestDispatcher("../EditProfile.jsp");
+			rd.forward(request, response);
+		}
+		else {
+			response.sendRedirect("../member/login?next=profile/edit");
+		}
+		
 	}
 
 }

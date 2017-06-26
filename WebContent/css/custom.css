@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Codystar|Open+Sans+Condensed:300');
+body {
+	font-family: 'Open Sans Condensed', san-serif;
+}
+.company-text {
+	float: left;
+	padding-left: 20px;
+	width: 150px;
+}
+.company-text-main {
+	font-family: 'Codystar';
+	font-size: 50px;
+	font-weight: bold;
+}
+.company-text-descr {
+	font-family: 'Open Sans Condensed';
+	padding-top: 20px;
+}
+.company-text-descr center {
+	margin-top: 10px;
+	text-transform: uppercase;
+	font-size: 22px;
+}
+.logo {
+	float: left;
+	margin-top: 10px;
+}
+header {
+	height: 143px;
+	border-style: solid;
+	border-width: 0 0 2px 0;
+	border-color: #bc0104;
+	
+}
+.company-text hr {
+	margin: 0px;
+}
+.red-text {
+	color: #d80100;
+}
+.logo-holder {
+	padding-top: 20px;
+}
+nav ul {
+	/* font-size: 0; */
+}
+nav ul a li{
+	display: inline-block;
+	min-width: 100px;
+	height: 100%;
+	line-height: 143px;
+	padding: 0 20px 0 20px;
+	background: linear-gradient(#d80100,#bc0104);
+	text-align: center;
+	color: #fff;
+	font-family: 'Open Sans Condensed';
+	text-transform: uppercase;
+	font-size: 20px;
+}
+footer {
+	width: 100%;
+	height: 50px;
+	background-color: #d80100;
+	clear: both;
+}
+footer span {
+	font-family: 'Open Sans Condensed';
+	font-size: 20px;
+	line-height: 50px;
+	color: #fff;
+}
+.btn-primary {
+	background-color: #d80100;
+	border-radius: 0px;
+	border-color: transparent;
+	border-width: 0px;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active:hover {
+	background-color: #b20121;
+}
+.content {
+	padding: 20px 0 30px 0;
+	min-height: 700px;
+}
+.form-control {
+	border: 3px solid #ddd;
+	font-size: 20px;
+	height: 40px;
+	padding: 3px 12px;
+}
+.form-control:focus {
+	border-color: #888;
+}
+.form-control:focus, .form-control:active {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+label {
+	font-size: 17px;
+	text-transform: uppercase;
+}
+p {
+	font-size: 28px;
+}
+.left-border {
+	border-style: solid;
+	border-width: 0 0 0 6px;
+	border-color: #d80100;
+	padding-left: 10px;
+	text-transform: uppercase;
+}
+.tickets {
+	padding-left: 0px;
+}
+.tickets a li {
+	height: auto;
+	width: 100%;
+	list-style: none;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #f3f3f3;
+}
+.tickets p {
+	font-size: 16px;
+	font-family: 'Open Sans';
+	margin-left: 30px;
+}
+.tickets a {
+	color: inherit;
+}
+.tickets a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+.profile_img {
+	border-radius: 50%;
+}
+.status-icon {
+	font-size: 24px;
+}
+.open-status-icon {
+	color: red;
+}
+.await-status-icon {
+	color: green;
+}
+.closed-status-icon {
+	color: gray;
+}
+.stat h1, .stat h2 {
+	text-align: center;
+}
+.stat h2 {
+	margin-top: 0px;
+}
+.divider {
+	width: 100%;
+	border: 0.5px solid #ddd;
+	margin: 20px 0 20px 0;
+}
+.ticket-meta {
+    margin-top: 20px;
+}
+.ticket-link li:hover {
+	background-color: #f8f8f8;
+}
+.no-bottom-margin {
+	margin-bottom: 0px;
+}
+.ticket-meta-title {
+	text-transform: uppercase;
+}
+.timestamp {
+	margin-left: 30px; 
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.status-ticket-text {
+    text-transform: uppercase;
+}
+.ticket-content-meta-title {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 20px 0 5px 0;
+    color: #b3b3b3;
+}
+.ticket-content-meta-author {
+    font-size: 21px;
+    padding-left: 20px;
+}
+.ticket-content-meta-contact {
+	font-size: 21px;
+}
+.ticket-content-meta {
+	border-style: solid;
+	border-width: 0 0 0 1px;
+	border-color: #eee;
+	padding: 0 0 0 20px;
+}
+.stars {
+	font-size: 27px;
+	color: #dabf32;
+}

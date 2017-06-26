@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.dataconnector.DataConnector;
 import com.members.UserDetails;
@@ -17,8 +19,15 @@ public class TicketData {
 	private String title, department, category, subCategory, description, status, phone, email;
 	private long lastModified, createdAt;
 	
+	Connection con = null;
+	
 	TicketData(int ticketId) {
-		Connection con = new DataConnector().connect();
+		this.con = new DataConnector().connect();
+		prepareTicket(ticketId);		
+	}
+	
+	public void prepareTicket(int ticketId) {
+		this.con = new DataConnector().connect();
 		try {
 			PreparedStatement st = con.prepareStatement("SELECT id, title, department, category, subcat, description, status, user_id, phone, email FROM tickets WHERE id = ?");
 			st.setInt(1, ticketId);
@@ -37,7 +46,7 @@ public class TicketData {
 				setFeedback( new Feedback( getID() ) );
 			}
 			
-			con.close();
+			this.con.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -45,6 +54,27 @@ public class TicketData {
 		}
 		
 		//setUserdata(new UserDetails(email));
+	}
+	
+	public static ArrayList<TicketData> getAllTickets() {
+		Connection con = new DataConnector().connect();
+		Statement st;
+		ArrayList<TicketData> ticketList = new ArrayList<TicketData>();
+		try {
+			
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery("SELECT id FROM tickets ORDER BY last_modified DESC");
+			
+			while(rs.next())
+				ticketList.add( new TicketData( rs.getInt(1) ) );
+			
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ticketList;
 		
 	}
 	

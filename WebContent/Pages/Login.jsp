@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<br/>
-			
+			<input type="hidden" name="next" value="<%= request.getParameter("next") %>">
 			<div class="row col-md-12">
 				<button type="submit" class="btn btn-primary">Login</button>
 			</div>

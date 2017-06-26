@@ -7,6 +7,20 @@
 		<div class="row">
 			<h1 class="left-border">Report</h1>
 			<hr>
+			<table class="table table-striped">
+				<tr>
+					<th>Date</th>
+					<th>Count</th>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>30</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>30</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>

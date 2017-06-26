@@ -32,10 +32,14 @@ public class ReportController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		UserDetails ud = new UserDetails((String) session.getAttribute("email"));
-		request.setAttribute("userdata", ud);
-		RequestDispatcher rd = request.getRequestDispatcher("Report.jsp");
-		rd.forward(request, response);
+		if( session.getAttribute("email") != null) {
+			UserDetails ud = new UserDetails((String) session.getAttribute("email"));
+			request.setAttribute("userdata", ud);
+			RequestDispatcher rd = request.getRequestDispatcher("Report.jsp");
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect("member/login?next=report");
+		}
 	}
 
 	/**

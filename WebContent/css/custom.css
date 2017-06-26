@@ -203,3 +203,7 @@ p {
 	font-size: 27px;
 	color: #dabf32;
 }
+.table tr td, .table tr th {
+	font-size: 20px;
+	font-family: 'Open Sans';
+}

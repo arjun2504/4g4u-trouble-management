@@ -32,18 +32,25 @@ public class TicketController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("email") != null) {
-			UserDetails userdetail = new UserDetails((String) session.getAttribute("email"));
-			request.setAttribute("userdata", userdetail);
-			
-			int ticketId = Integer.parseInt(request.getParameter("id"));
-			TicketData ticket = new TicketData(ticketId);
-			request.setAttribute("ticket", ticket);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("Ticket.jsp");
-			rd.forward(request, response);
-		} else {
+		String id = request.getParameter("id");
+		
+		if(id == null || id.isEmpty()) {
 			response.sendRedirect("member/login");
+		} else {
+		
+			int ticketId = Integer.parseInt(id);
+			
+			if(session.getAttribute("email") != null) {
+				UserDetails userdetail = new UserDetails((String) session.getAttribute("email"));
+				request.setAttribute("userdata", userdetail);
+				TicketData ticket = new TicketData(ticketId);
+				request.setAttribute("ticket", ticket);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("Ticket.jsp");
+				rd.forward(request, response);
+			} else {
+				response.sendRedirect("member/login?next=ticket?id=" + ticketId);
+			}
 		}
 		
 	}

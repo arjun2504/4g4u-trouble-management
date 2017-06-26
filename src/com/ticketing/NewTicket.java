@@ -43,7 +43,7 @@ public class NewTicket extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/NewTicket.jsp");
 			rd.forward(request, response);
 		} else {
-			response.sendRedirect("../member/login");
+			response.sendRedirect("../member/login?next=ticket/create");
 		}
 	}
 

@@ -57,7 +57,12 @@ public class Login extends HttpServlet {
 		if(authenticate(email, password)) {
 			session = req.getSession();
 			session.setAttribute("email", email);
-			resp.sendRedirect("../dashboard");
+			
+			if(req.getParameter("next").equals("null")) {
+				resp.sendRedirect("../dashboard");
+			} else {
+				resp.sendRedirect( req.getContextPath() + "/" + req.getParameter("next") );
+			}
 		} else {
 			resp.sendRedirect("login");
 		}

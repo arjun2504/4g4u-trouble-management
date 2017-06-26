@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.w3c.dom.UserDataHandler;
+
 import com.dataconnector.DataConnector;
 /**
  * Servlet implementation class MembersRedirect
@@ -26,6 +28,7 @@ import com.dataconnector.DataConnector;
 public class Login extends HttpServlet {
 	
 	HttpSession session;
+	String email = null;
 	
 	private static final long serialVersionUID = 1L;
        
@@ -56,7 +59,7 @@ public class Login extends HttpServlet {
 		
 		if(authenticate(email, password)) {
 			session = req.getSession();
-			session.setAttribute("email", email);
+			session.setAttribute("email", this.email);
 			
 			if(req.getParameter("next").equals("null")) {
 				resp.sendRedirect("../dashboard");
@@ -79,7 +82,37 @@ public class Login extends HttpServlet {
 			ResultSet rs = st.executeQuery();
 			rs.last();
 			int numOfRows = rs.getRow();
-			isValid = (numOfRows > 0) ? true : false;
+			if(numOfRows > 0) {
+				isValid = true;
+				this.email = email;
+			}
+			else {
+				isValid = false;
+			}
+			
+			this.email = email;
+			
+			if(!isValid) {
+				st = con.prepareStatement("SELECT email FROM users WHERE id=? AND password=?");
+				st.setString(1, email);
+				st.setString(2, password);
+				rs = st.executeQuery();
+				String mailId = null;
+				if(rs.next())
+					 mailId = rs.getString(1);
+				rs.last();
+				numOfRows = rs.getRow();
+				if(numOfRows > 0 && mailId != null) {
+					isValid = true;
+					this.email = mailId;
+				}
+				else {
+					isValid = false;
+				}
+				
+				con.close();
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

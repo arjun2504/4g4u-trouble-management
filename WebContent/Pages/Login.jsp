@@ -8,8 +8,8 @@
 			
 			<div class="row">
 				<div class="col-md-4">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" />
+					<label for="email">Email or User ID</label>
+					<input type="text" id="email" name="email" class="form-control" />
 				</div>
 			</div>
 			

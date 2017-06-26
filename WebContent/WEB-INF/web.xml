@@ -49,7 +49,6 @@
     <servlet-name>Ticket</servlet-name>
     <url-pattern>/ticket</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Report</servlet-name>
     <servlet-class>com.reporting.ReportController</servlet-class>
@@ -57,5 +56,13 @@
   <servlet-mapping>
     <servlet-name>Report</servlet-name>
     <url-pattern>/report</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Edit Profile</servlet-name>
+    <servlet-class>com.members.EditProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edit Profile</servlet-name>
+    <url-pattern>/profile/edit</url-pattern>
   </servlet-mapping>
 </web-app>

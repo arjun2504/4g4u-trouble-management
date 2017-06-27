@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class TicketData {
 	private Feedback feedback;
 
 	private String title, department, category, subCategory, description, status, phone, email;
-	private long lastModified, createdAt;
+	private Timestamp lastModified, createdAt;
 	
 	Connection con = null;
 	
@@ -45,8 +46,8 @@ public class TicketData {
 				setPhone(rs.getString(9)); 
 				setEmail(rs.getString(10));
 				setFeedback( new Feedback( getID() ) );
-				setLastModified(rs.getLong(11));
-				setCreatedAt(rs.getLong(12));
+				setLastModified(rs.getTimestamp(11));
+				setCreatedAt(rs.getTimestamp(12));
 			}
 			
 			this.con.close();
@@ -81,14 +82,6 @@ public class TicketData {
 		
 	}
 	
-	public Date getLastModifiedDate() {
-		return new Date((long) this.lastModified * 1000 );
-	}
-	
-	public Date getCreatedAtDate() {
-		return new Date((long) this.createdAt * 1000 );
-	}
-	
 	public Feedback getFeedback() {
 		return feedback;
 	}
@@ -105,11 +98,11 @@ public class TicketData {
 		return email;
 	}
 
-	public long getLastModified() {
+	public Timestamp getLastModified() {
 		return lastModified;
 	}
 
-	public long getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
@@ -121,11 +114,11 @@ public class TicketData {
 		this.email = email;
 	}
 
-	public void setLastModified(long lastModified) {
+	public void setLastModified(Timestamp lastModified) {
 		this.lastModified = lastModified;
 	}
 
-	public void setCreatedAt(long createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 

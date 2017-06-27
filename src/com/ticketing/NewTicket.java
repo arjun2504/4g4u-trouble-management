@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -73,8 +76,11 @@ public class NewTicket extends HttpServlet {
 			ps.setString(7, descr);
 			ps.setString(8, "open");
 			long currentUnixTime = System.currentTimeMillis() / 1000L;
-			ps.setLong(9, currentUnixTime);
-			ps.setLong(10, currentUnixTime);
+			Calendar calendar = Calendar.getInstance();
+			Date now = calendar.getTime();
+			Timestamp currentTimestamp = new Timestamp(now.getTime());
+			ps.setTimestamp(9, currentTimestamp);
+			ps.setTimestamp(10, currentTimestamp);
 			ps.setString(11, phone);
 			ps.setString(12, email);
 			int rows = ps.executeUpdate();

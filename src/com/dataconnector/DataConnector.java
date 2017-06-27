@@ -3,7 +3,7 @@ package com.dataconnector;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class DataConnector {
 	
@@ -11,8 +11,8 @@ public class DataConnector {
 	
 	public DataConnector() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			this.con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/4g4u", "root", "");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			this.con = (Connection) DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.102:1521:xe","system","root");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

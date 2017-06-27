@@ -3,6 +3,8 @@ package com.ticketing;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 import com.dataconnector.DataConnector;
 import com.dataconnector.Identifier;
@@ -28,12 +30,12 @@ public class StatusSwitcher {
 	public int setFeedback(int rating, String comments) {
 		try {
 			PreparedStatement ps = this.con.prepareStatement("INSERT INTO feedback (id, ticket_id, stars, comments, feedback_added_at) VALUES (?,?,?,?,?)");
-			long currentUnixTime = System.currentTimeMillis() / 1000L;
 			ps.setInt(1, Identifier.getNextId("feedback"));
 			ps.setInt(2, this.ID);
 			ps.setInt(3, rating);
 			ps.setString(4, comments);
-			ps.setLong(5, currentUnixTime);
+			Timestamp currTime = new Timestamp(Calendar.getInstance().getTime().getTime());
+			ps.setTimestamp(5, currTime);
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -47,8 +49,8 @@ public class StatusSwitcher {
 		try {
 			if(status.equals("closed")) {
 				ps = this.con.prepareStatement("UPDATE tickets SET status = ?, last_modified = ? WHERE id = ?");
-				long currentUnixTime = System.currentTimeMillis() / 1000L;
-				ps.setLong(2, currentUnixTime);
+				Timestamp currTime = new Timestamp(Calendar.getInstance().getTime().getTime());
+				ps.setTimestamp(2, currTime);
 				ps.setInt(3, this.ID);
 			} else {
 				ps = this.con.prepareStatement("UPDATE tickets SET status = ? WHERE id = ?");

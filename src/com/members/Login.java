@@ -80,9 +80,8 @@ public class Login extends HttpServlet {
 			st.setString(1, email);
 			st.setString(2, password);
 			ResultSet rs = st.executeQuery();
-			rs.last();
-			int numOfRows = rs.getRow();
-			if(numOfRows > 0) {
+			
+			if(rs.next()) {
 				isValid = true;
 				this.email = email;
 			}
@@ -98,13 +97,12 @@ public class Login extends HttpServlet {
 				st.setString(2, password);
 				rs = st.executeQuery();
 				String mailId = null;
-				if(rs.next())
+				if(rs.next()) {
 					 mailId = rs.getString(1);
-				rs.last();
-				numOfRows = rs.getRow();
-				if(numOfRows > 0 && mailId != null) {
-					isValid = true;
-					this.email = mailId;
+					 if(mailId != null) {
+						 isValid = true;
+						this.email = mailId;
+					 }
 				}
 				else {
 					isValid = false;

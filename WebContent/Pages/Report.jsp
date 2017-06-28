@@ -18,6 +18,7 @@
 							<option value="day">Day-wise</option>
 							<option value="month">Month-wise</option>
 							<option value="year">Year-wise</option>
+							<option value="slnviolation">SLN Violated Tickets</option>
 						</select>
 					</form>
 				</div>
@@ -48,6 +49,41 @@
 						<td><c:out value="${ report.getDate() }"/></td>
 						<td><c:out value="${ report.getCount() }"/></td>
 					</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+			
+			<c:if test="${ not empty slnreport }">				
+				<table class="table table-striped">
+					<tr>
+						<th>Ticket #</th>
+						<th>Title</th>
+						<th>Department</th>
+						<th>Status</th>
+						<th>Days Exceeded</th>
+					</tr>
+					<c:forEach items="${ slnreport }" var="report">
+					<%-- <c:if test="${ report.getDiffDays() > 2 }">
+						<c:set value="danger" var="danger"></c:set>
+					</c:if> --%>
+					<tr class="${ danger }">
+						<td><a href="ticket?id=${ report.getId() }"/>Ticket #<c:out value="${ report.getId() }"></c:out></a></td>
+						<td><c:out value="${ report.getTitle() }"/></td>
+						<td><c:out value="${ report.getDepartment() }"/></td>
+						<td>
+							<c:if test="${ report.getStatus().equals('open') }">
+								Pending
+							</c:if>
+							<c:if test="${ report.getStatus().equals('awaiting') }">
+								Completed
+							</c:if>
+							<c:if test="${ report.getStatus().equals('closed') }">
+								Closed
+							</c:if>
+						</td>
+						<td><c:out value="${ report.getDiffDays() }"/></td>
+					</tr>
+					<%-- <c:remove var="danger" /> --%>
 					</c:forEach>
 				</table>
 			</c:if>

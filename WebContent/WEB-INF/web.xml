@@ -65,4 +65,13 @@
     <servlet-name>Edit Profile</servlet-name>
     <url-pattern>/profile/edit</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>com.members.Profile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
 </web-app>

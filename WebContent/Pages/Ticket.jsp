@@ -108,7 +108,7 @@
 						<div class="ticket-content-meta-title">Created By</div>
 						<img src="http://www.gravatar.com/avatar/${ ticket.getUserdata().getEncryptedEmail() }" class="profile_img pull-left"/>
 						<div class="ticket-content-meta-author pull-left">
-							<font size="6px"><b>${ ticket.getUserdata().getFirstName() } ${ ticket.getUserdata().getLastName() }</b></font>
+							<font size="6px"><b>${ ticket.getUserdata().getFirstName() }<br/>${ ticket.getUserdata().getLastName() }</b></font>
 						</div>
 						<div class="clearfix"></div>
 						<div class="ticket-content-meta-contact">

@@ -207,3 +207,13 @@ p {
 	font-size: 20px;
 	font-family: 'Open Sans';
 }
+.edit-prof {
+	font-size: 18px;
+	text-transform: uppercase;
+}
+a {
+	color: #000;
+}
+a:hover {
+	color: #000;
+}

@@ -38,14 +38,31 @@ public class Profile extends HttpServlet {
 		String email = (String) hs.getAttribute("email");
 		String prof = request.getParameter("id");		
 		if(email != null) {
-			UserDetails userdata = new UserDetails(email);
+			UserDetails userdata = null;
+			if(request.getParameter("id") != null)
+				userdata = new UserDetails(Integer.parseInt(request.getParameter("id")));
+			else
+				userdata = new UserDetails(email);
 			request.setAttribute("userdata", userdata);
 			
-			ArrayList<TicketData> allTickets = TicketData.getAllTickets();
+			ArrayList<TicketData> allTickets = TicketData.getTickets(userdata.getID());
+			request.setAttribute("tickets", allTickets);
+			int totalCount = 0, openCount = 0, pendingCount = 0, closedCount = 0;
 			ListIterator<TicketData> li = allTickets.listIterator();
 			while(li.hasNext()) {
-				
+				TicketData td = li.next();
+				if(td.getStatus().equals("open")) {
+					openCount++;
+				} else if(td.getStatus().equals("awaiting")) {
+					pendingCount++;
+				} else {
+					closedCount++;
+				}
 			}
+			
+			request.setAttribute("openCount", openCount);
+			request.setAttribute("pendingCount", pendingCount);
+			request.setAttribute("closedCount", closedCount);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Profile.jsp");
 			rd.forward(request, response);

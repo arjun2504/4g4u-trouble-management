@@ -60,14 +60,14 @@ public class TicketData {
 		//setUserdata(new UserDetails(email));
 	}
 	
-	public static ArrayList<TicketData> getAllTickets() {
+	public static ArrayList<TicketData> getTickets(int userId) {
 		Connection con = new DataConnector().connect();
 		Statement st;
 		ArrayList<TicketData> ticketList = new ArrayList<TicketData>();
 		try {
 			
 			st = con.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id FROM tickets ORDER BY last_modified DESC");
+			ResultSet rs = st.executeQuery("SELECT id FROM tickets WHERE user_id = " + userId + " ORDER BY last_modified DESC");
 			
 			while(rs.next())
 				ticketList.add( new TicketData( rs.getInt(1) ) );

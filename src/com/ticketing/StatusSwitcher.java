@@ -47,7 +47,7 @@ public class StatusSwitcher {
 	private void changeStatus(String status) {
 		PreparedStatement ps = null;
 		try {
-			if(status.equals("closed")) {
+			if(status.equals("awaiting")) {
 				ps = this.con.prepareStatement("UPDATE tickets SET status = ?, last_modified = ? WHERE id = ?");
 				Timestamp currTime = new Timestamp(Calendar.getInstance().getTime().getTime());
 				ps.setTimestamp(2, currTime);

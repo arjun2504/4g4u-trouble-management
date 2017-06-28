@@ -66,7 +66,7 @@ public class NewTicket extends HttpServlet {
 		int userId = new UserDetails(sessionEmail).getID();
 		Connection dc = new DataConnector().connect();
 		try {
-			PreparedStatement ps = dc.prepareStatement("INSERT INTO tickets (id, user_id, title, department, category, subcat, description, status, created_at, last_modified, phone, email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = dc.prepareStatement("INSERT INTO tickets (id, user_id, title, department, category, subcat, description, status, created_at, phone, email) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, Identifier.getNextId("tickets") );
 			ps.setInt(2, userId);
 			ps.setString(3, title);
@@ -75,14 +75,13 @@ public class NewTicket extends HttpServlet {
 			ps.setString(6, subcat);
 			ps.setString(7, descr);
 			ps.setString(8, "open");
-			long currentUnixTime = System.currentTimeMillis() / 1000L;
 			Calendar calendar = Calendar.getInstance();
 			Date now = calendar.getTime();
 			Timestamp currentTimestamp = new Timestamp(now.getTime());
 			ps.setTimestamp(9, currentTimestamp);
-			ps.setTimestamp(10, currentTimestamp);
-			ps.setString(11, phone);
-			ps.setString(12, email);
+			//ps.setTimestamp(10, currentTimestamp);
+			ps.setString(10, phone);
+			ps.setString(11, email);
 			int rows = ps.executeUpdate();
 			
 			if(rows > 0) {

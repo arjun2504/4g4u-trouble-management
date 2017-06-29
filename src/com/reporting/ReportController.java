@@ -34,9 +34,13 @@ public class ReportController extends HttpServlet {
 		HttpSession session = request.getSession();
 		if( session.getAttribute("email") != null) {
 			UserDetails ud = new UserDetails((String) session.getAttribute("email"));
-			request.setAttribute("userdata", ud);
-			RequestDispatcher rd = request.getRequestDispatcher("Report.jsp");
-			rd.forward(request, response);
+			if(ud.isAdmin()) {
+				request.setAttribute("userdata", ud);
+				RequestDispatcher rd = request.getRequestDispatcher("Report.jsp");
+				rd.forward(request, response);
+			} else {
+				response.sendRedirect("dashboard");
+			}
 		} else {
 			response.sendRedirect("member/login?next=report");
 		}

@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.dataconnector.DataConnector;
 
 public class Feedback {
 	private int ID, rating, ticketId;
 	private String comment;
-	private long feedbackTime;
+	private Timestamp feedbackTime;
 	
 	Feedback(int ticketId) {
 		Connection con = new DataConnector().connect();
@@ -23,7 +24,7 @@ public class Feedback {
 				setTicketId(rs.getInt(2));
 				setRating(rs.getInt(3));
 				setComment(rs.getString(4));
-				setFeedbackTime(rs.getLong(5));
+				setFeedbackTime(rs.getTimestamp(5));
 			}
 			con.close();
 		} catch (SQLException e) {
@@ -51,7 +52,7 @@ public class Feedback {
 		return comment;
 	}
 
-	public long getFeedbackTime() {
+	public Timestamp getFeedbackTime() {
 		return feedbackTime;
 	}
 
@@ -67,7 +68,7 @@ public class Feedback {
 		this.comment = comment;
 	}
 
-	public void setFeedbackTime(long feedbackTime) {
+	public void setFeedbackTime(Timestamp feedbackTime) {
 		this.feedbackTime = feedbackTime;
 	}
 }

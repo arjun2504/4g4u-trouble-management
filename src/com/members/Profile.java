@@ -39,13 +39,21 @@ public class Profile extends HttpServlet {
 		String prof = request.getParameter("id");		
 		if(email != null) {
 			UserDetails userdata = null;
-			if(request.getParameter("id") != null)
-				userdata = new UserDetails(Integer.parseInt(request.getParameter("id")));
-			else
-				userdata = new UserDetails(email);
+			userdata = new UserDetails(email);
 			request.setAttribute("userdata", userdata);
+			ArrayList<TicketData> allTickets = new ArrayList<TicketData>();
 			
-			ArrayList<TicketData> allTickets = TicketData.getTickets(userdata.getID());
+			if(request.getParameter("id") != null) {
+				int userId = Integer.parseInt( (String) request.getParameter("id") );
+				UserDetails profileData = new UserDetails( userId );
+				allTickets = TicketData.getTickets( userId );
+				request.setAttribute("profile", profileData);
+			}
+			else {
+				allTickets = TicketData.getTickets(userdata.getID());
+				request.setAttribute("profile", userdata);
+			}
+				
 			request.setAttribute("tickets", allTickets);
 			int totalCount = 0, openCount = 0, pendingCount = 0, closedCount = 0;
 			ListIterator<TicketData> li = allTickets.listIterator();

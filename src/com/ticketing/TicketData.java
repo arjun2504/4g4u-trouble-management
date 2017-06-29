@@ -8,9 +8,11 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import com.dataconnector.DataConnector;
 import com.members.UserDetails;
+import com.ocpsoft.pretty.time.PrettyTime;
 
 public class TicketData {
 	
@@ -88,6 +90,11 @@ public class TicketData {
 
 	public void setFeedback(Feedback feedback) {
 		this.feedback = feedback;
+	}
+	
+	public String getPrettyTime() {
+		PrettyTime p = new PrettyTime();
+		return p.format(this.createdAt);
 	}
 	
 	public String getPhone() {

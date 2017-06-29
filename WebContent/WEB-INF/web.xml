@@ -65,7 +65,6 @@
     <servlet-name>Edit Profile</servlet-name>
     <url-pattern>/profile/edit</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Profile</servlet-name>
     <servlet-class>com.members.Profile</servlet-class>
@@ -73,5 +72,13 @@
   <servlet-mapping>
     <servlet-name>Profile</servlet-name>
     <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Log out</servlet-name>
+    <servlet-class>com.members.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Log out</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -28,7 +28,7 @@
 					
 					<p><c:out value="${ ticket.getDescription() }" /></p>
 					
-					<div class="timestamp"><span class="glyphicon glyphicon-time"></span> 9 hours ago</div>
+					<div class="timestamp"><span class="glyphicon glyphicon-time"></span> ${ ticket.getPrettyTime() }</div>
 					
 				</div>
 				

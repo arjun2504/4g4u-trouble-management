@@ -95,7 +95,7 @@
 							<p>This ticket is resolved. No action required.</p>
 						</c:when>
 						<c:when test="${ userdata.isAdmin() && ticket.getStatus() == 'awaiting' }">
-							<p>Waiting for <c:out value="${ ticket.getUserdata().getFirstName() }"/>'s feedback. No action required.</p>
+							<p>Waiting for <a href="<%= request.getContextPath() + "/profile?id=" %>${ ticket.getUserdata().getID() }"><c:out value="${ ticket.getUserdata().getFirstName() }"/></a>'s feedback. No action required.</p>
 						</c:when>
 					</c:choose>
 					
@@ -108,7 +108,7 @@
 						<div class="ticket-content-meta-title">Created By</div>
 						<img src="http://www.gravatar.com/avatar/${ ticket.getUserdata().getEncryptedEmail() }" class="profile_img pull-left"/>
 						<div class="ticket-content-meta-author pull-left">
-							<font size="6px"><b>${ ticket.getUserdata().getFirstName() }<br/>${ ticket.getUserdata().getLastName() }</b></font>
+							<font size="6px"><b><a href="<%= request.getContextPath() + "/profile?id=" %>${ ticket.getUserdata().getID() }">${ ticket.getUserdata().getFirstName() }<br/>${ ticket.getUserdata().getLastName() }</a></b></font>
 						</div>
 						<div class="clearfix"></div>
 						<div class="ticket-content-meta-contact">

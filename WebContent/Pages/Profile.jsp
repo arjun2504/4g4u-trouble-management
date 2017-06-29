@@ -23,16 +23,15 @@
 		<div class="row">
 			<div class="ticket-content-meta">
 			<br/>
-				<img src="http://www.gravatar.com/avatar/${ userdata.getEncryptedEmail() }" class="profile_img pull-left"/>
-			
+				<img src="http://www.gravatar.com/avatar/${ profile.getEncryptedEmail() }" class="profile_img pull-left"/>
 			<div class="ticket-content-meta-author pull-left">
-				<font size="6px"><b><a href="<%= request.getContextPath() + "/profile" %>">${ userdata.getFirstName() }<br/>${ userdata.getLastName() }</a></b></font>
+				<font size="6px"><b><a href="<%= request.getContextPath() + "/profile?id=" %>${ profile.getID() }">${ profile.getFirstName() }<br/>${ profile.getLastName() }</a></b></font>
 			</div>
 			<div class="clearfix"></div>
 			
 			<div class="ticket-content-meta-title">Contact</div>
-				<p><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp; ${ userdata.getEmail() }</p>
-				<p><i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp; ${ userdata.getPhone() }</p>						
+				<p><i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp; ${ profile.getEmail() }</p>
+				<p><i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp; ${ profile.getPhone() }</p>						
 			</div>
 		</div>
 	</div>

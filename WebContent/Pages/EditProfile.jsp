@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row">
 	<jsp:include page="../Sidebar.jsp" />
 	<div class="col-md-10">
 		<div class="row">
 			<h1 class="left-border">Edit Profile</h1>
 			<hr>
-			
+			<c:if test="${ flag == 1 }">
+				<div class="alert alert-success">
+					Success! Changes Saved.
+				</div>
+				</c:if>
+				<c:if test="${ flag == 0 }">
+				<div class="alert alert-danger">
+					Failed to update profile. Please check the data.
+				</div>
+			</c:if>
 			<form method="post">
 			
 			<div class="row">

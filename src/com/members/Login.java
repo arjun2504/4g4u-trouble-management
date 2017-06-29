@@ -44,9 +44,15 @@ public class Login extends HttpServlet {
 		RequestDispatcher rd;
 		session = req.getSession();
 		
+		
 		if(session.getAttribute("email") != null) {
 			resp.sendRedirect("../dashboard");
 		} else {
+			
+			if(req.getParameter("flag") != null) {
+				int userId = Integer.parseInt(req.getParameter("flag"));
+				req.setAttribute("flag", userId);
+			}
 			rd = req.getRequestDispatcher("/Login.jsp");
 			rd.forward(req, resp);
 		}

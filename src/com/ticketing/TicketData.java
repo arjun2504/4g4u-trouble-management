@@ -20,7 +20,9 @@ public class TicketData {
 	private UserDetails userdata;
 	private Feedback feedback;
 
-	private String title, department, category, subCategory, description, status, phone, email;
+	private String title, department, category, subCategory, description, status, phone, email, availability;
+	
+
 	private Timestamp lastModified, createdAt;
 	
 	Connection con = null;
@@ -33,7 +35,7 @@ public class TicketData {
 	public void prepareTicket(int ticketId) {
 		this.con = new DataConnector().connect();
 		try {
-			PreparedStatement st = con.prepareStatement("SELECT id, title, department, category, subcat, description, status, user_id, phone, email, last_modified, created_at FROM tickets WHERE id = ?");
+			PreparedStatement st = con.prepareStatement("SELECT id, title, department, category, subcat, description, status, user_id, phone, email, last_modified, created_at, availability FROM tickets WHERE id = ?");
 			st.setInt(1, ticketId);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
@@ -50,6 +52,7 @@ public class TicketData {
 				setFeedback( new Feedback( getID() ) );
 				setLastModified(rs.getTimestamp(11));
 				setCreatedAt(rs.getTimestamp(12));
+				setAvailability(rs.getString(13));
 			}
 			
 			this.con.close();
@@ -82,6 +85,14 @@ public class TicketData {
 		
 		return ticketList;
 		
+	}
+	
+	public String getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(String availability) {
+		this.availability = availability;
 	}
 	
 	public Feedback getFeedback() {

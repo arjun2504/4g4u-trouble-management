@@ -61,6 +61,21 @@
 			</div>
 			
 			<div class="form-group">
+				<label for="availability" class="col-sm-2 control-label">Availability</label>
+				<div class="col-sm-9">
+					<select id="availability" class="form-control" name="availability">
+						<option>Anytime between 8 am to 9 pm</option>
+						<option>8 am to 10 am</option>
+						<option>11 am to 1 pm</option>
+						<option>1 pm to 3 pm</option>
+						<option>3 pm to 5 pm</option>
+						<option>5 pm to 7 pm</option>
+						<option>7 pm to 9 pm</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
 				<label for="desciption" class="col-sm-2 control-label">Description</label>
 				<div class="col-sm-9">
 					<textarea class="form-control" id="textarea" name="descr" required></textarea>

@@ -40,6 +40,11 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("0")) {
+			request.setAttribute("flag", 0);
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/Register.jsp");
 		rd.forward(request, response);
 	}
@@ -70,12 +75,17 @@ public class Register extends HttpServlet {
 			ps.setString(5, encryptedPassword);
 			ps.setString(6, phone);
 			ps.setInt(7, 0);
-			int rows = ps.executeUpdate();
-			System.out.println(rows);
+			int rows = 0;
+			try {
+				rows = ps.executeUpdate();
+			} catch(Exception e) {
+				
+			}
+			
 			if(rows != 0) {
-				response.sendRedirect("login");
+				response.sendRedirect("login?flag=" + newId);
 			} else {
-				response.sendRedirect("register");
+				response.sendRedirect("register?flag=0");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

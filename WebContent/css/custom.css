@@ -217,3 +217,15 @@ a {
 a:hover {
 	color: #000;
 }
+.tickets .empty-tickets {
+	clear: both;
+	margin-top: 20px !important;
+}
+.empty-tickets p {
+	font-family: 'Open Sans Condensed';
+	font-size: 25px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #b3b3b3;
+	margin-left: 0px !important;
+}

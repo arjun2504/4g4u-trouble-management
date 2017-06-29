@@ -123,6 +123,9 @@
 							</c:if>
 						</div>
 						<div class="clearfix"></div>
+						<div class="ticket-content-meta-title">Availability Time</div>
+						<p>${ ticket.getAvailability() }</p>	
+						<div class="clearfix"></div>
 						<div class="ticket-content-meta-title">Department</div>
 						<p>${ ticket.getDepartment() }</p>						
 						<div class="clearfix"></div>

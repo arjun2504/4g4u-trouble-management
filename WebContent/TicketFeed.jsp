@@ -57,5 +57,16 @@
 	</a>
 	<div class="clearfix"></div>
 	</c:forEach>
+	
+	
+	<c:if test="${empty tickets}">
+		<div class="clearfix"></div>
+		<br/><br/>
+		<span class="empty-tickets"><p>No Tickets raised.</p>
+		<center>
+			<a href="ticket/create"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Raise a Ticket</button></a>
+		</center>
+		</span>
+	</c:if>
 
 </ul>

@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 	<h1 class="left-border">Register</h1>
 	<hr>
-	
+	<c:if test="${ flag == 0 }">
+		<div class="alert alert-danger">
+			Registration was unsuccessful. Please try again with valid data.
+		</div>
+	</c:if>
 		<form action="member/register" method="post" onsubmit="return validate()">
 			
 			<div class="row">
@@ -29,7 +34,7 @@
 				
 				<div class="col-md-6">
 					<label for="phone">Phone</label>
-					<input type="text" id="phone" name="phone" class="form-control" required />
+					<input type="text" id="phone" name="phone" class="form-control" maxlength="10" required />
 				</div>
 			</div>
 			

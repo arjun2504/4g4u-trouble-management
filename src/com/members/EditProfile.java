@@ -59,19 +59,26 @@ public class EditProfile extends HttpServlet {
 			int userId = ud.getID();
 			
 			UserDetails edited = new UserDetails(ud.getID());
-				
+			int flag = 0;
 			if(!email.equals(sessionEmail)) {
 				UserDetails ud1 = new UserDetails(email);
 				if(ud1.getFirstName() == null) {
 					//new email is not present, hence we can go for next step
 					this.session.setAttribute("email", email);
-					edited.updateProfile(fname, lname, phone, email);
+					flag = edited.updateProfile(fname, lname, phone, email);
 				}
 			} else if(email.equals(sessionEmail)) {
-				edited.updateProfile(fname, lname, phone, email);
+				flag = edited.updateProfile(fname, lname, phone, email);
 			}
 			UserDetails newDetails = new UserDetails((String) this.session.getAttribute("email"));
 			request.setAttribute("userdata", newDetails);
+			
+			if(flag > 0) {
+				request.setAttribute("flag", 1);
+			} else {
+				request.setAttribute("flag", 0);
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("../EditProfile.jsp");
 			rd.forward(request, response);
 		}

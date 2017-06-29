@@ -61,12 +61,13 @@ public class NewTicket extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String descr = request.getParameter("descr");
+		String avail = request.getParameter("availability");
 		HttpSession session = request.getSession();
 		String sessionEmail = (String) session.getAttribute("email");
 		int userId = new UserDetails(sessionEmail).getID();
 		Connection dc = new DataConnector().connect();
 		try {
-			PreparedStatement ps = dc.prepareStatement("INSERT INTO tickets (id, user_id, title, department, category, subcat, description, status, created_at, phone, email) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = dc.prepareStatement("INSERT INTO tickets (id, user_id, title, department, category, subcat, description, status, created_at, phone, email, availability) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, Identifier.getNextId("tickets") );
 			ps.setInt(2, userId);
 			ps.setString(3, title);
@@ -82,6 +83,7 @@ public class NewTicket extends HttpServlet {
 			//ps.setTimestamp(10, currentTimestamp);
 			ps.setString(10, phone);
 			ps.setString(11, email);
+			ps.setString(12, avail);
 			int rows = ps.executeUpdate();
 			
 			if(rows > 0) {

@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom.css">
 <script src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/custom.js"></script>
 </head>
 <body>
 	<header>

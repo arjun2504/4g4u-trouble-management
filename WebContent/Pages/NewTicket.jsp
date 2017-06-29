@@ -12,7 +12,7 @@
 			<div class="form-group">
 				<label for="title" class="col-sm-2 control-label">Title</label>
 				<div class="col-sm-9">
-					<input type="text" id="title" name="title" class="form-control">
+					<input type="text" id="title" name="title" class="form-control" required>
 				</div>
 			</div>
 			
@@ -49,21 +49,21 @@
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-9">
-					<input type="email" id="email" class="form-control" name="email" value="${userdata.getEmail()}" readonly>
+					<input type="email" id="email" class="form-control" name="email" value="${userdata.getEmail()}">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="phone" class="col-sm-2 control-label">Phone</label>
 				<div class="col-sm-9">
-					<input type="text" id="phone" class="form-control" name="phone" value="${userdata.getPhone()}" readonly>
+					<input type="text" id="phone" class="form-control" name="phone" value="${userdata.getPhone()}">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="desciption" class="col-sm-2 control-label">Description</label>
 				<div class="col-sm-9">
-					<textarea class="form-control" id="textarea" name="descr"></textarea>
+					<textarea class="form-control" id="textarea" name="descr" required></textarea>
 				</div>
 			</div>
 			

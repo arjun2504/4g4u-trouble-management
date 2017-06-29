@@ -12,13 +12,13 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label for="fname">First Name</label>
-					<input type="text" id="fname" name="fname" class="form-control" value="${ userdata.getFirstName() }" />
+					<input type="text" id="fname" name="fname" class="form-control" value="${ userdata.getFirstName() }" required/>
 				</div>
 				
 				
 				<div class="col-md-6">
 					<label for="lname">Last Name</label>
-					<input type="text" id="lname" name="lname" class="form-control" value="${ userdata.getLastName() }" />
+					<input type="text" id="lname" name="lname" class="form-control" value="${ userdata.getLastName() }" required/>
 				</div>
 			</div>
 			
@@ -27,12 +27,12 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" value="${ userdata.getEmail() }" />
+					<input type="email" id="email" name="email" class="form-control" value="${ userdata.getEmail() }" required/>
 				</div>
 				
 				<div class="col-md-6">
 					<label for="phone">Phone</label>
-					<input type="text" id="phone" name="phone" class="form-control" value="${ userdata.getPhone() }"/>
+					<input type="text" id="phone" name="phone" class="form-control" value="${ userdata.getPhone() }" required/>
 				</div>
 			</div>
 			

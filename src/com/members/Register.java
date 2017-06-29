@@ -62,13 +62,14 @@ public class Register extends HttpServlet {
 		
 		try {
 			int newId = Identifier.getNextId("users");
-			PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, first_name, last_name, email, password, phone) VALUES (?,?,?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO users (id, first_name, last_name, email, password, phone, is_admin) VALUES (?,?,?,?,?,?,?)");
 			ps.setInt(1, newId);
 			ps.setString(2, first_name);
 			ps.setString(3, last_name);
 			ps.setString(4, email);
 			ps.setString(5, encryptedPassword);
 			ps.setString(6, phone);
+			ps.setInt(7, 0);
 			int rows = ps.executeUpdate();
 			System.out.println(rows);
 			if(rows != 0) {

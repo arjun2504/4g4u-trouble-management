@@ -5,7 +5,7 @@
 	<div class="col-md-10 pull-right">
 		<div class="row">
 		<!-- <h1 class="pull-left"><span class="glyphicon glyphicon-chevron-left"></span></h1> &nbsp; -->
-		<h1 class="left-border pull-left">Create Ticket</h1>
+		<h1 class="left-border pull-left">Raise Ticket</h1>
 		<div class="clearfix"></div>
 		<hr>
 		<form method="post" class="form-horizontal">
@@ -30,8 +30,8 @@
 				<label for="cat" class="col-sm-2 control-label">Category</label>
 				<div class="col-sm-9">
 					<select class="form-control" id="cat" name="cat">
-						<option>Equipment Issue</option>
 						<option>Billing Issue</option>
+						<option>Equipment Issue</option>
 					</select>
 				</div>
 			</div>
@@ -40,8 +40,8 @@
 				<label for="subcat" class="col-sm-2 control-label">Sub-category</label>
 				<div class="col-sm-9">
 					<select class="form-control" id="subcat" name="subcat">
-						<option>Damaged Equipment</option>
 						<option>Wrong Billing</option>
+						<option>Damaged Equipment</option>
 					</select>
 				</div>
 			</div>

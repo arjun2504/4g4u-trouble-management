@@ -63,9 +63,11 @@
 		<div class="clearfix"></div>
 		<br/><br/>
 		<span class="empty-tickets"><p>No Tickets raised.</p>
-		<center>
-			<a href="ticket/create"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Raise a Ticket</button></a>
-		</center>
+		<c:if test="${ not userdata.isAdmin() }">
+			<center>
+				<a href="ticket/create"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Raise a Ticket</button></a>
+			</center>
+		</c:if>
 		</span>
 	</c:if>
 

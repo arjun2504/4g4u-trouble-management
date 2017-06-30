@@ -10,7 +10,7 @@
 	<br/>
 	<c:if test="${ not userdata.isAdmin() }">
 	<center>
-		<a href="ticket/create"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> New</button></a>
+		<a href="ticket/create"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Raise</button></a>
 	</center>
 	<br/>
 	</c:if>

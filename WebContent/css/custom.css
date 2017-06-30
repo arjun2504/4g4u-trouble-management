@@ -47,9 +47,8 @@ nav ul {
 nav ul a li{
 	display: inline-block;
 	min-width: 100px;
-	height: 100%;
-	line-height: 143px;
-	padding: 0 20px 0 20px;
+	height: 143px;
+	padding: 40px 20px 0 20px;
 	background: linear-gradient(#d80100,#bc0104);
 	text-align: center;
 	color: #fff;
@@ -228,4 +227,10 @@ a:hover {
 	text-align: center;
 	color: #b3b3b3;
 	margin-left: 0px !important;
+}
+.home-text {
+	font-size: 22px;
+}
+.nav-title {
+	margin-top:8px;	
 }

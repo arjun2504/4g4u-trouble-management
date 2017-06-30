@@ -24,15 +24,40 @@
 			<div class="col-md-7 pull-right">
 				<nav>
 					<ul>
-						<a href="#"><li><span class="glyphicon glyphicon-home"></span> Home</li></a>
-						<a href="about"><li><span class="glyphicon glyphicon-info-sign"></span> About</li></a>
-						<a href="contact"><li><span class="glyphicon glyphicon-phone"></span> Contact</li></a>
+						<a href="#">
+							<li>
+								<div class="glyphicon glyphicon-home"></div>
+								<div class="nav-title">Home</div>
+							</li>
+						</a>
+						<a href="about">
+							<li>
+								<div class="glyphicon glyphicon-info-sign"></div>
+								<div class="nav-title">About</div>
+							</li>
+						</a>
+						<a href="contact">
+							<li>
+								<div class="glyphicon glyphicon-phone"></div>
+								<div class="nav-title">Contact</div>
+							</li>
+						</a>
 						<%
 							if(session.getAttribute("email") == null) {
 						%>
-						<a href="member/login"><li><span class="glyphicon glyphicon-user"></span> Login / Register</li></a>
+						<a href="member/login">
+							<li>
+								<div class="glyphicon glyphicon-user"></div>
+								<div class="nav-title">Login / Register</div>
+							</li>
+						</a>
 						<% } else { %>
-						<a href="dashboard"><li><span class="glyphicon glyphicon-dashboard"></span> Dashboard</li></a>
+						<a href="dashboard">
+							<li>
+								<div class="glyphicon glyphicon-dashboard"></div>
+								<div class="nav-title">Dashboard</div>
+							</li>
+						</a>
 						<% }  %>
 					</ul>
 				</nav>
